@@ -1,0 +1,31 @@
+<style>
+  nav {
+    background-color: #444;
+  }
+
+  .active {
+    color: tomato;
+  }
+
+  a {
+    color: #fafafa;
+  }
+</style>
+
+<nav>
+  <ul>
+    <li><strong>Angular</strong></li>
+  </ul>
+  <ul>
+    <li>
+      <a
+        [routerLink]="['/count']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Count</a
+      >
+    </li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Products</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,32 @@
+<div>
+  <input
+    type="text"
+    placeholder="Título"
+    #txtTitle
+    [value]="title()"
+    (input)="title.set(txtTitle.value)"
+  />
+  <input
+    type="text"
+    placeholder="Descripción"
+    #txtDescription
+    [value]="description()"
+    (input)="description.set(txtDescription.value)"
+  />
+  <div>
+    <label for="isAvailable"
+      >isAvailable
+      <input
+        type="checkbox"
+        id="isAvailable"
+        #txtIsAvailable
+        [value]="isAvailable()"
+        (input)="isAvailable.set(txtIsAvailable.checked)"
+      />
+    </label>
+  </div>
+  <button (click)="addCharacter()">Agregar</button>
+</div>
+<hr />
+
+<item-list [items]="items()"></item-list>

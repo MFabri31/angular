@@ -1,0 +1,16 @@
+<style>
+  .success {
+    color: green !important;
+  }
+</style>
+
+<section>
+  <h1>Lista de items</h1>
+  @for (item of items(); track item.title) {
+  <li [class.success]="item.isAvailable === true">
+    {{ item.title }} | @if( item.isAvailable ){ Disponible }@else { No disponible }
+  </li>
+  } @empty {
+  <li>There are no items.</li>
+  }
+</section>
