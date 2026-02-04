@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, output, Output } from '@angular/core';
 import type { Item } from '../../../interfaces/character-interface';
 
 @Component({
@@ -8,4 +8,6 @@ import type { Item } from '../../../interfaces/character-interface';
 })
 export class ItemList {
   items = input.required<Item[]>();
+
+  onDeleteItem = output<number>();
 }

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import type { Item } from '../../interfaces/character-interface';
-import { ItemList } from '../../components/itemList/item-list/item-list';
+import { ItemList } from '../itemList/item-list/item-list';
 
 @Component({
   selector: 'item-page',
@@ -49,5 +49,15 @@ export class ItemsPage {
     ]);
 
     this.resetForm();
+  }
+
+  deleteItem(id: number): void {
+    let confirmDelete = confirm('Are you sure you want to delete this item?');
+
+    if (!confirmDelete) {
+      return;
+    } else {
+      this.items.update((items) => items.filter((item) => item.id !== id));
+    }
   }
 }

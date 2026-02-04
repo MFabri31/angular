@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePage } from './pages/home/home-page';
 import { CounterComponent } from './pages/counter/counter';
 import { ErrorPage } from './pages/errorPage/error-page';
-import { ItemsPage } from './pages/items/items';
+import { ItemsPage } from './components/items/items';
 
 export const routes: Routes = [
   {

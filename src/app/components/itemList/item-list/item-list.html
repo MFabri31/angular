@@ -2,15 +2,45 @@
   .success {
     color: green !important;
   }
+  .error {
+    color: red !important;
+  }
+
+  .btn-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
 </style>
 
 <section>
-  <h1>Lista de items</h1>
+  <h1>List of items</h1>
   @for (item of items(); track item.title) {
-  <li [class.success]="item.isAvailable === true">
-    {{ item.title }} | @if( item.isAvailable ){ Disponible }@else { No disponible }
-  </li>
+    <li class="item">
+      <div>
+        {{ item.title }} -
+        @if (item.isAvailable) {
+          <span [class.success]="item.isAvailable">Disponible</span>
+        } @else {
+          <span [class.error]="!item.isAvailable">No disponible</span>
+        }
+      </div>
+
+      <button class="btn-delete" (click)="onDeleteItem.emit(item.id)">Delete</button>
+    </li>
   } @empty {
-  <li>There are no items.</li>
+    <li>There are no items.</li>
   }
 </section>

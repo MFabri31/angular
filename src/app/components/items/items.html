@@ -1,14 +1,14 @@
 <div>
   <input
     type="text"
-    placeholder="Título"
+    placeholder="Title"
     #txtTitle
     [value]="title()"
     (input)="title.set(txtTitle.value)"
   />
   <input
     type="text"
-    placeholder="Descripción"
+    placeholder="Description"
     #txtDescription
     [value]="description()"
     (input)="description.set(txtDescription.value)"
@@ -25,8 +25,8 @@
       />
     </label>
   </div>
-  <button (click)="addCharacter()">Agregar</button>
+  <button (click)="addCharacter()">Add</button>
 </div>
 <hr />
 
-<item-list [items]="items()"></item-list>
+<item-list [items]="items()" (onDeleteItem)="deleteItem($event)"></item-list>
