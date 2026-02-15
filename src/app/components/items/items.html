@@ -3,15 +3,15 @@
     type="text"
     placeholder="Title"
     #txtTitle
-    [value]="title()"
-    (input)="title.set(txtTitle.value)"
+    [value]="itemsService.title()"
+    (input)="itemsService.title.set(txtTitle.value)"
   />
   <input
     type="text"
     placeholder="Description"
     #txtDescription
-    [value]="description()"
-    (input)="description.set(txtDescription.value)"
+    [value]="itemsService.description()"
+    (input)="itemsService.description.set(txtDescription.value)"
   />
   <div>
     <label for="isAvailable"
@@ -20,13 +20,16 @@
         type="checkbox"
         id="isAvailable"
         #txtIsAvailable
-        [value]="isAvailable()"
-        (input)="isAvailable.set(txtIsAvailable.checked)"
+        [value]="itemsService.isAvailable()"
+        (input)="itemsService.isAvailable.set(txtIsAvailable.checked)"
       />
     </label>
   </div>
-  <button (click)="addCharacter()">Add</button>
+  <button (click)="itemsService.addCharacter()">Add</button>
 </div>
 <hr />
 
-<item-list [items]="items()" (onDeleteItem)="deleteItem($event)"></item-list>
+<item-list
+  [items]="itemsService.items()"
+  (onDeleteItem)="itemsService.deleteItem($event)"
+></item-list>
