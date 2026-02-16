@@ -17,9 +17,8 @@ export const routes: Routes = [
     path: '/items',
     component: ItemsPage,
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '',
-  //    component: ErrorPage,
-  // },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
 ];
