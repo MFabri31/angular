@@ -1,5 +1,10 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { Item } from '../app/interfaces/character-interface';
+
+const loadFromLocalStorage = (): Item[] => {
+  const items = localStorage.getItem('items');
+  return items ? JSON.parse(items) : [];
+};
 
 @Injectable({
   providedIn: 'root',
@@ -9,20 +14,11 @@ export class ItemsService {
   description = signal('');
   isAvailable = signal(false);
 
-  items = signal<Item[]>([
-    {
-      id: 1,
-      title: 'Item 1',
-      description: 'Description of item1',
-      isAvailable: true,
-    },
-    {
-      id: 2,
-      title: 'Item 2',
-      description: 'Description of item 2',
-      isAvailable: true,
-    },
-  ]);
+  items = signal<Item[]>(loadFromLocalStorage());
+
+  saveToLocalStorage = effect(() => {
+    localStorage.setItem('items', JSON.stringify(this.items()));
+  });
 
   resetForm() {
     this.title.set('');
